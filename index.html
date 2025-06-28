@@ -3,11 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDUCATION DEPARTMENT SCREENING TEST PREPARATION – June 17, 2025</title>
+    <title>Day 10 Quiz - EDUCATION DEPARTMENT SCREENING TEST PREPARATION – June 28, 2025</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* Disable right-click, specific keyboard shortcuts (Ctrl+U, Ctrl+Shift+I, Ctrl+Shift+J, F12), copy, and paste */
+        body {
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+        }
+
+        /* General Body Styling */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #F8F9FA; /* Very light gray */
@@ -16,10 +27,11 @@
             padding: 0;
             display: flex;
             flex-direction: column;
-            min-height: 10vh;
+            min-height: 100vh; /* Full viewport height */
             overflow-x: hidden; /* Prevent horizontal scrolling */
         }
 
+        /* Top Bar Styling */
         .top-bar {
             background-color: #ffffff;
             border-bottom: 1px solid #e0e0e0;
@@ -48,6 +60,7 @@
             gap: 0.5rem;
         }
 
+        /* Header Section Styling */
         .header-section {
             background-color: #ffffff;
             padding: 1.5rem 1rem;
@@ -77,7 +90,7 @@
         .progress-bar {
             height: 100%;
             width: 0%;
-            background: linear-gradient(to right, #20B2AA, #3EB489);
+            background: linear-gradient(to right, #20B2AA, #3EB489); /* Teal to Mint Green */
             border-radius: 5px;
             transition: width 0.3s ease-in-out;
         }
@@ -96,8 +109,9 @@
             margin-top: 0.5rem;
         }
 
+        /* Card Styling (for login, quiz, results pages) */
         .card {
-            background-color: #FFF5EE; /* PeachPuff */
+            background-color: #FFF5EE; /* PeachPuff - very light, warm tone */
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             padding: 1.5rem;
@@ -107,9 +121,10 @@
             box-sizing: border-box;
         }
 
+        /* Button Styling */
         .button-gradient {
-            background-image: linear-gradient(to right, #E6E6FA, #FFDAB9); /* Lavender to PeachPuff */
-            color: #2C3E50;
+            background-image: linear-gradient(to right, #E6E6FA, #FFDAB9); /* Lavender to PeachPuff - light and attractive */
+            color: #2C3E50; /* Dark text for contrast */
             font-weight: bold;
             padding: 0.75rem 1.5rem;
             border-radius: 8px;
@@ -131,7 +146,7 @@
 
         .option-button {
             background-color: #ffffff;
-            border: 1px solid #ddd;
+            border: 1px solid #ddd; /* Light border */
             padding: 0.75rem 1rem;
             border-radius: 8px;
             text-align: left;
@@ -143,35 +158,37 @@
         }
 
         .option-button:hover:not(.selected) {
-            background-color: #f0f0f0;
+            background-color: #f0f0f0; /* Slightly darker on hover */
         }
 
         .option-button.selected {
-            border-color: #6D6875;
+            border-color: #6D6875; /* Medium gray for selected */
             background-color: #f0f0f0;
             font-weight: bold;
         }
 
         .option-button.correct {
             background-color: #90EE90; /* LightGreen */
-            border-color: #28a745;
+            border-color: #28a745; /* Darker green border */
             animation: pulse-green 0.5s ease-out forwards;
         }
 
         .option-button.incorrect {
-            background-color: #FF6B6B; /* Red pulse */
-            border-color: #dc3545;
+            background-color: #FF6B6B; /* Light Red */
+            border-color: #dc3545; /* Darker red border */
             animation: shake-red 0.5s ease-out forwards;
         }
 
+        /* Special Question Styling */
         .special-question {
             border: 3px solid #FFD700; /* Gold border */
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); /* Glowing effect */
         }
 
+        /* Explanation Section Styling */
         .explanation {
-            background-color: #e0f7fa;
-            border-left: 5px solid #20B2AA;
+            background-color: #e0f7fa; /* Light Cyan */
+            border-left: 5px solid #20B2AA; /* Teal border */
             padding: 1rem;
             margin-top: 1rem;
             border-radius: 8px;
@@ -180,6 +197,7 @@
             display: none; /* Hidden by default */
         }
 
+        /* Timer and Progress Display */
         .timer-display {
             font-size: 1.2rem;
             font-weight: bold;
@@ -193,6 +211,19 @@
             color: #6D6875;
             margin-bottom: 1rem;
             text-align: center;
+        }
+
+        /* Animations */
+        @keyframes pulse-green {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.01); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes shake-red {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
         }
 
         /* Responsive adjustments */
@@ -234,21 +265,22 @@
 <body>
 
     <script>
-        document.addEventListener('contextmenu', event => event.preventDefault()); // Disable right-click
+        // Disable right-click, specific keyboard shortcuts (Ctrl+U, Ctrl+Shift+I, Ctrl+Shift+J, F12), copy, and paste
+        document.addEventListener('contextmenu', event => event.preventDefault());
         document.addEventListener('keydown', e => {
             if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j')) {
-                e.preventDefault(); // Disable Ctrl+U, Ctrl+Shift+I, Ctrl+Shift+J
+                e.preventDefault();
             }
             if (e.key === 'F12') {
-                e.preventDefault(); // Disable F12
+                e.preventDefault();
             }
         });
-        document.addEventListener('copy', event => event.preventDefault()); // Disable copy
-        document.addEventListener('paste', event => event.preventDefault()); // Disable paste
+        document.addEventListener('copy', event => event.preventDefault());
+        document.addEventListener('paste', event => event.preventDefault());
     </script>
 
     <div class="top-bar">
-        <a href="https://chat.whatsapp.com/your-whatsapp-community-link" target="_blank" class="whatsapp-link">
+        <a href="https://chat.whatsapp.com/H3uhXoDodPmAOaVvi3PcZq" target="_blank" class="whatsapp-link">
             <i class="fab fa-whatsapp"></i> Join WhatsApp Community
         </a>
         <div class="date-display" id="liveDate"></div>
@@ -268,7 +300,8 @@
     </div>
 
     <main class="flex-grow flex items-center justify-center p-4">
-        <div id="loginPage" class="card">
+        <!-- All page sections are initially hidden to prevent flicker -->
+        <div id="loginPage" class="card hidden">
             <h2 class="text-xl font-bold mb-4 text-center">Login</h2>
             <div class="mb-4">
                 <label for="loginId" class="block text-sm font-medium text-gray-700 mb-1">ID:</label>
@@ -297,7 +330,7 @@
             <div class="question-progress" id="questionProgress"></div>
             <h2 class="text-lg font-semibold mb-4" id="questionText"></h2>
             <div id="optionsContainer" class="flex flex-col gap-3 mb-6">
-                </div>
+            </div>
             <div class="flex justify-between">
                 <button id="prevBtn" class="button-gradient px-6 py-2">Previous</button>
                 <button id="nextBtn" class="button-gradient px-6 py-2">Next</button>
@@ -310,7 +343,7 @@
             <h2 class="text-xl font-bold mb-4 text-center">Quiz Results</h2>
             <p class="mb-2"><strong>Candidate Name:</strong> <span id="resultCandidateName"></span></p>
             <p class="mb-2"><strong>Date of Quiz:</strong> <span id="resultDate"></span></p>
-            <p class="mb-2"><strong>Score:</strong> <span id="resultScore"></span> / 200</p>
+            <p class="mb-2"><strong>Score:</strong> <span id="resultScore"></span> / <span id="maxScore"></span></p>
             <p class="mb-2"><strong>Correct Answers:</strong> <span id="resultCorrect"></span></p>
             <p class="mb-2"><strong>Incorrect Answers:</strong> <span id="resultIncorrect"></span></p>
             <p class="mb-4"><strong>Time Taken:</strong> <span id="resultTimeTaken"></span></p>
@@ -320,22 +353,24 @@
 
     <script>
         // Set the current date for display and logic
-        const CURRENT_DATE_STR = "June 17, 2025"; // MANDATORY DAILY INPUT
+        const CURRENT_DATE_STR = "June 28, 2025";
         const CURRENT_DATE = new Date(CURRENT_DATE_STR);
 
         // Update header dates
         document.getElementById('liveDate').textContent = CURRENT_DATE_STR;
         document.getElementById('updatedDate').textContent = CURRENT_DATE_STR;
-        document.getElementById('quizTitle').textContent = `EDUCATION DEPARTMENT SCREENING TEST PREPARATION – ${CURRENT_DATE_STR}`;
+        document.getElementById('quizTitle').textContent = `Day 10 Quiz - EDUCATION DEPARTMENT SCREENING TEST PREPARATION – ${CURRENT_DATE_STR}`;
 
         // Quiz Data Structure
-        const quizQuestions = [];
+        const originalQuizQuestions = []; // Stores the initial, unshuffled questions
+        let quizQuestions = []; // This array will be shuffled and used for the current quiz
         let currentQuestionIndex = 0;
-        let userAnswers = []; // Stores { questionIndex: int, selectedOptionIndex: int, isCorrect: bool }
+        // Stores { questionIndex: int (original index), selectedOptionIndex: int (index in shuffled options), isCorrect: bool, originalCorrectOptionIndex: int }
+        let userAnswers = []; 
         let quizStartTime;
         let timerInterval;
-        const QUIZ_DURATION_MINUTES = 40;
-        let specialQuestionIndex = -1; // To store the index of the special question
+        const QUIZ_DURATION_MINUTES = 40; // Default quiz duration
+        let specialQuestionOriginalIndex = -1; // To store the original index of the special question
 
         // --- Helper Functions ---
 
@@ -348,14 +383,6 @@
                 const j = Math.floor(Math.random() * (i + 1));
                 [array[i], array[j]] = [array[j], array[i]];
             }
-        }
-
-        /**
-         * Generates a unique ID for Formspree submission.
-         * @returns {string} A unique ID.
-         */
-        function generateUniqueId() {
-            return 'quiz_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
         }
 
         /**
@@ -432,12 +459,27 @@
             if (question.special && CURRENT_DATE.toDateString() === today) {
                 quizCard.classList.add('special-question');
             }
+            
+            // Create a shuffled copy of the options for the current question
+            // We need to store the original index mapping before shuffling
+            const shuffledOptionsWithOriginalIndex = question.options.map((option, index) => ({
+                optionText: option,
+                originalIndex: index
+            }));
+            shuffleArray(shuffledOptionsWithOriginalIndex);
 
-            question.options.forEach((option, index) => {
+            // Store the shuffled options and their original correct index for this question
+            // This allows us to track the correct option even after shuffling
+            quizQuestions[currentQuestionIndex].shuffledOptions = shuffledOptionsWithOriginalIndex;
+            quizQuestions[currentQuestionIndex].shuffledCorrectOptionIndex = shuffledOptionsWithOriginalIndex.findIndex(
+                opt => opt.originalIndex === question.correctOptionIndex
+            );
+
+            shuffledOptionsWithOriginalIndex.forEach((optionObj, index) => {
                 const button = document.createElement('button');
                 button.classList.add('option-button', 'w-full');
-                button.textContent = option;
-                button.dataset.optionIndex = index;
+                button.innerHTML = optionObj.optionText; // Use innerHTML to render LaTeX
+                button.dataset.shuffledOptionIndex = index; // Store the shuffled index
                 button.onclick = () => selectOption(index);
 
                 // Apply selected state if already answered
@@ -456,9 +498,18 @@
                 optionsContainer.appendChild(button);
             });
 
+            // Render math equations using MathJax if available
+            if (typeof MathJax !== 'undefined') {
+                MathJax.typesetPromise([document.getElementById('questionText'), optionsContainer]);
+            }
+
+
             // Show/hide explanation
             const explanationDiv = document.getElementById('explanationDiv');
             explanationDiv.innerHTML = `<p class="font-bold">Explanation:</p><p>${question.explanation}</p>`;
+            if (typeof MathJax !== 'undefined') {
+                MathJax.typesetPromise([explanationDiv]);
+            }
             if (userAnswers[currentQuestionIndex] && userAnswers[currentQuestionIndex].selectedOptionIndex !== undefined) {
                 explanationDiv.style.display = 'block';
             } else {
@@ -475,17 +526,18 @@
 
         /**
          * Handles option selection by the user.
-         * @param {number} selectedOptionIndex - The index of the selected option.
+         * @param {number} selectedOptionIndex - The index of the selected option from the SHUFFLED options.
          */
         function selectOption(selectedOptionIndex) {
             const question = quizQuestions[currentQuestionIndex];
-            const isCorrect = (selectedOptionIndex === question.correctOptionIndex);
+            const isCorrect = (selectedOptionIndex === question.shuffledCorrectOptionIndex);
 
             // Store user's answer
             userAnswers[currentQuestionIndex] = {
                 questionIndex: currentQuestionIndex,
-                selectedOptionIndex: selectedOptionIndex,
-                isCorrect: isCorrect
+                selectedOptionIndex: selectedOptionIndex, // This is the index in the SHUFFLED options
+                isCorrect: isCorrect,
+                originalCorrectOptionIndex: question.correctOptionIndex // Store original correct index for reference if needed
             };
 
             // Apply visual feedback
@@ -501,11 +553,18 @@
                     } else {
                         button.classList.add('incorrect');
                     }
+                } else if (index === question.shuffledCorrectOptionIndex) {
+                    // Highlight the correct answer even if not selected by the user
+                    button.classList.add('correct');
                 }
             });
 
             // Show explanation
             document.getElementById('explanationDiv').style.display = 'block';
+             // Render math equations in explanation
+            if (typeof MathJax !== 'undefined') {
+                MathJax.typesetPromise([document.getElementById('explanationDiv')]);
+            }
         }
 
         /**
@@ -540,23 +599,30 @@
 
             let correctCount = 0;
             let incorrectCount = 0;
+            let totalAttempted = 0;
 
             userAnswers.forEach(answer => {
-                if (answer && answer.isCorrect) {
-                    correctCount++;
-                } else if (answer && answer.selectedOptionIndex !== undefined) {
-                    incorrectCount++;
+                if (answer && answer.selectedOptionIndex !== undefined) {
+                    totalAttempted++;
+                    if (answer.isCorrect) {
+                        correctCount++;
+                    } else {
+                        incorrectCount++;
+                    }
                 }
             });
 
-            const score = (correctCount * 2) - (incorrectCount * 1);
+            const maxPossibleScore = quizQuestions.length * 2; // 2 points per question
+            const score = (correctCount * 2) - incorrectCount; // Score calculation: 2 for correct, -1 for incorrect
+
             const candidateName = document.getElementById('candidateName').value;
 
             document.getElementById('resultCandidateName').textContent = candidateName;
             document.getElementById('resultDate').textContent = CURRENT_DATE_STR;
             document.getElementById('resultScore').textContent = score;
-            document.getElementById('resultCorrect').textContent = `${correctCount} / ${userAnswers.length}`;
-            document.getElementById('resultIncorrect').textContent = `${incorrectCount} / ${userAnswers.length}`;
+            document.getElementById('maxScore').textContent = maxPossibleScore;
+            document.getElementById('resultCorrect').textContent = `${correctCount} / ${totalAttempted}`;
+            document.getElementById('resultIncorrect').textContent = `${incorrectCount} / ${totalAttempted}`;
             document.getElementById('resultTimeTaken').textContent = formatTime(timeTakenSeconds);
 
             showPage('resultsPage');
@@ -569,7 +635,7 @@
             formData.append('Correct Answers', correctCount);
             formData.append('Incorrect Answers', incorrectCount);
             formData.append('Time Taken', formatTime(timeTakenSeconds));
-            formData.append('Quiz ID', generateUniqueId()); // Unique ID for each submission
+            formData.append('Quiz ID', "day10"); // Specific ID for Day 10 quiz
 
             fetch('https://formspree.io/f/xwpojgab', {
                 method: 'POST',
@@ -595,7 +661,8 @@
             const password = document.getElementById('loginPassword').value;
             const loginError = document.getElementById('loginError');
 
-            if (id === 'day19' && password === '1111') {
+            // Specific credentials for Day 10
+            if (id === 'day10' && password === '1010') {
                 loginError.classList.add('hidden');
                 showPage('candidateNamePage');
             } else {
@@ -623,161 +690,285 @@
 
         document.getElementById('nextBtn').addEventListener('click', nextQuestion);
         document.getElementById('prevBtn').addEventListener('click', prevQuestion);
-        document.getElementById('submitQuizBtn').addEventListener('click', () => submitQuiz(false));
+        document.getElementById('submitQuizBtn').addEventListener('click', () => {
+            // Optional: Add a confirmation dialog before submitting
+            if (confirm("Are you sure you want to submit the quiz? You cannot change your answers after submission.")) {
+                submitQuiz(false);
+            }
+        });
         document.getElementById('restartQuizBtn').addEventListener('click', () => {
-            // Reset quiz state
-            currentQuestionIndex = 0;
-            userAnswers = [];
-            clearInterval(timerInterval); // Clear any lingering timer
-            // Re-shuffle questions for a new attempt
-            initializeQuiz();
-            showPage('loginPage'); // Go back to login for a fresh start
+            // Optional: Add a confirmation dialog before restarting
+            if (confirm("Are you sure you want to restart the quiz? Your current progress will be lost.")) {
+                // Reset quiz state
+                currentQuestionIndex = 0;
+                userAnswers = [];
+                clearInterval(timerInterval); // Clear any lingering timer
+                // Re-initialize and re-shuffle questions for a new attempt
+                initializeQuiz(); 
+                // Clear login fields and go back to login page
+                document.getElementById('loginId').value = '';
+                document.getElementById('loginPassword').value = '';
+                document.getElementById('candidateName').value = '';
+                showPage('loginPage');
+            }
         });
 
         // --- Quiz Initialization ---
         function initializeQuiz() {
-            // Clear previous questions
-            quizQuestions.length = 0;
+            // Populate originalQuizQuestions (only once) if not already populated
+            if (originalQuizQuestions.length === 0) {
+                // Pedagogy (20 MCQs from Pages 37-80)
+                const pedagogyMCQs = [
+                    { question: "What does the Latin word 'Educare' mean?", options: ["To lead out", "To draw forth", "To nourish, bring up", "To teach"], correctOptionIndex: 2, explanation: "Educare means to nourish, to bring up (Page 37)." },
+                    { question: "The word 'Educere' means:", options: ["To teach", "To lead forth", "To educate", "To evaluate"], correctOptionIndex: 1, explanation: "Educere means to lead forth, to draw out (Page 37)." },
+                    { question: "The Latin word 'Educatum' is composed of which two terms?", options: ["$E$ and $C$", "$E$ and $Duco$", "Ex and Domus", "Ed and Ducare"], correctOptionIndex: 1, explanation: "'E' implies a movement from inward to outward, and 'Duco' means developing or progressing (Page 37)." },
+                    { question: "Education is defined as 'Positive change in behavior or mind of individual, society or community life according to the need and demand of society'. This definition is:", options: ["Incorrect", "Incomplete", "Correct", "Outdated"], correctOptionIndex: 2, explanation: "This is a comprehensive definition of education (Page 37)." },
+                    { question: "What is the relationship between 'learning' and 'education'?", options: ["Learning is product", "Education is product", "They are same", "They are unrelated"], correctOptionIndex: 1, explanation: "Learning is the underlying process of acquiring knowledge, and education is the structured system providing it (Page 37)." },
+                    { question: "Formal education typically takes place in the premises of:", options: ["Home", "Society", "School", "Marketplace"], correctOptionIndex: 2, explanation: "Formal education is characterized by its institutional setting (Page 37)." },
+                    { question: "Which type of education is spontaneous, lifelong, and occurs through daily experiences?", options: ["Formal", "Non-formal", "Informal", "Higher"], correctOptionIndex: 2, explanation: "Informal education is natural and continuous, occurring without a fixed syllabus or timetable (Page 37)." },
+                    { question: "Which type of education is organized outside the formal system, often catering to specific needs or groups with flexible curriculum?", options: ["Formal", "Informal", "Non-formal", "Basic"], correctOptionIndex: 2, explanation: "Non-formal education aims to meet specific learning needs of particular groups (Page 38)." },
+                    { question: "School grading/certification and university degrees are examples of:", options: ["Informal", "Non-formal", "Formal", "Self-education"], correctOptionIndex: 2, explanation: "These are structured outcomes of formal educational systems (Page 37)." },
+                    { question: "A parent teaching a child how to prepare a meal is an example of:", options: ["Formal", "Non-formal", "Informal", "Vocational"], correctOptionIndex: 2, explanation: "Learning everyday life skills from parents falls under informal education (Page 38)." },
+                    { question: "One characteristic of formal education is that it is:", options: ["Flexible", "Not pre-planned", "Structured hierarchically", "Without assessments"], correctOptionIndex: 2, explanation: "Formal education follows a defined structure and progression (Page 37)." },
+                    { question: "A disadvantage of formal education is that brilliant students may be bored due to:", options: ["Lack of teachers", "Long wait for session", "Too much homework", "Lack of activities"], correctOptionIndex: 1, explanation: "The rigid chronological grading system can lead to boredom for advanced learners (Page 38)." },
+                    { question: "Informal education has no definite syllabus, no timetable, and requires:", options: ["Regular fees", "Certificates/degrees", "No fees", "Strict discipline"], correctOptionIndex: 2, explanation: "Informal learning is part of daily life and doesn't involve formal costs or certifications (Page 38)." },
+                    { question: "What is a characteristic of non-formal education?", options: ["Rigid and standardized.", "Flexible and learner-centered.", "Leads to university degree.", "Unorganized and accidental."], correctOptionIndex: 1, explanation: "Non-formal education adapts to the needs of the learners (Page 38)." },
+                    { question: "An advantage of non-formal education is that it:", options: ["Is highly expensive", "Has fixed time", "Helps vocational skills", "Is recognized globally"], correctOptionIndex: 2, explanation: "Non-formal education often focuses on practical skills and job readiness (Page 38)." },
+                    { question: "Who said 'Education is the manifestation of perfection already in man'?", options: ["Mahatma Gandhi", "Swami Vivekananda", "John Dewey", "Rabindranath Tagore"], correctOptionIndex: 1, explanation: "This quote emphasizes the inherent potential within each individual (Page 41)." },
+                    { question: "The philosophy that emphasizes eternal truths and values, often through classical literature and art, is:", options: ["Progressivism", "Existentialism", "Perennialism", "Reconstructionism"], correctOptionIndex: 2, explanation: "Perennialism focuses on timeless ideas and universal truths (Page 41)." },
+                    { question: "Which philosophy believes that education should focus on personal meaning and individual freedom?", options: ["Idealism", "Realism", "Existentialism", "Pragmatism"], correctOptionIndex: 2, explanation: "Existentialism prioritizes individual choice and responsibility (Page 41)." },
+                    { question: "What is the aim of education according to 'Idealism'?", options: ["Prepare for life.", "Develop self-actualization.", "Seek universal truths.", "Foster social change."], correctOptionIndex: 2, explanation: "Idealism emphasizes the development of character and spiritual values (Page 42)." },
+                    { question: "Which philosophy emphasizes that education should be based on observation, scientific method, and objective reality?", options: ["Idealism", "Realism", "Pragmatism", "Existentialism"], correctOptionIndex: 1, explanation: "Realism focuses on the objective world and empirical data (Page 42)." }
+                ];
+                originalQuizQuestions.push(...pedagogyMCQs);
 
-            // Pedagogy (10 MCQs from Pages 73-76)
-            const pedagogyMCQs = [
-                { question: "Which of the following is a characteristic of 'student-centered learning'?", options: ["Teacher-led instruction.", "Emphasis on student autonomy, collaboration, and active participation.", "Rote memorization.", "Standardized curriculum for all."], correctOptionIndex: 1, explanation: "Student-centered learning empowers learners to take ownership of their education (Page 73)." },
-                { question: "What is the primary goal of 'formative assessment'?", options: ["To assign final grades.", "To monitor student learning and provide ongoing feedback to improve instruction and learning.", "To compare students to a national standard.", "To evaluate teacher performance."], correctOptionIndex: 1, explanation: "Formative assessment is for ongoing improvement (Page 73)." },
-                { question: "Which of the following is a characteristic of 'summative assessment'?", options: ["It provides immediate feedback for improvement.", "It evaluates student learning at the end of an instructional unit or course.", "It is used to identify learning difficulties early on.", "It is informal and ungraded."], correctOptionIndex: 1, explanation: "Summative assessment measures overall achievement (Page 74)." },
-                { question: "What is 'constructivism' in education?", options: ["Knowledge is transmitted directly from teacher to student.", "Learners actively construct their own understanding and knowledge through experience and reflection.", "Learning is primarily through rote memorization.", "Students are empty vessels to be filled with information."], correctOptionIndex: 1, explanation: "Constructivism emphasizes active knowledge construction (Page 74)." },
-                { question: "Which of the following is a key component of 'active learning'?", options: ["Students passively listen to lectures.", "Students engage in activities like discussions, problem-solving, and hands-on tasks.", "Teachers provide all the answers.", "Learning happens only through reading."], correctOptionIndex: 1, explanation: "Active learning involves direct student participation (Page 75)." },
-                { question: "What is the role of 'scaffolding' in education?", options: ["Removing all support from learners.", "Providing temporary support to students as they learn new concepts or skills, gradually withdrawing it as they become more proficient.", "Giving students only easy tasks.", "Ignoring student struggles."], correctOptionIndex: 1, explanation: "Scaffolding helps students bridge learning gaps (Page 75)." },
-                { question: "Which of the following is a characteristic of an 'effective teacher'?", options: ["Lack of enthusiasm.", "Strong content knowledge, effective communication, and ability to build positive relationships.", "Strict and unapproachable.", "Relies solely on textbooks."], correctOptionIndex: 1, explanation: "Effective teachers combine expertise with strong pedagogical skills and rapport (Page 76)." },
-                { question: "What is the importance of 'metacognition' in learning?", options: ["It is irrelevant to academic success.", "It involves students' awareness and control over their own learning processes, leading to improved strategies and self-regulation.", "It is only about memorizing facts.", "It discourages critical thinking."], correctOptionIndex: 1, explanation: "Metacognition enhances self-regulated learning (Page 76)." },
-                { question: "Which of the following describes 'problem-based learning'?", options: ["Students learn by memorizing solutions to problems.", "Students learn by actively solving complex, real-world problems.", "Teachers provide step-by-step solutions for all problems.", "It focuses on theoretical knowledge without practical application."], correctOptionIndex: 1, explanation: "Problem-based learning develops critical thinking and problem-solving (Page 76)." },
-                { question: "What is the role of 'feedback' in the learning process?", options: ["To only point out errors.", "To provide specific information about student performance, guiding them towards improvement and deeper understanding.", "To discourage students.", "To replace direct instruction."], correctOptionIndex: 1, explanation: "Constructive feedback is essential for student growth (Page 76)." }
-            ];
-            quizQuestions.push(...pedagogyMCQs);
+                // General Science (25 MCQs from Pages 271-320)
+                const generalScienceMCQs = [
+                    { question: "What is 'force' in physics?", options: ["Energy", "Power", "Push or pull", "Work"], correctOptionIndex: 2, explanation: "Force is a vector quantity, having both magnitude and direction (Page 271)." },
+                    { question: "What is the unit of force in the SI system?", options: ["Joule", "Watt", "Newton", "Pascal"], correctOptionIndex: 2, explanation: "One Newton is the force required to accelerate a mass of one kilogram at one meter per second squared (Page 271)." },
+                    { question: "What is 'pressure'?", options: ["Force per length", "Force per area", "Force per volume", "Force per time"], correctOptionIndex: 1, explanation: "Pressure is calculated as force divided by area ($P = F/A$) (Page 272)." },
+                    { question: "What is the SI unit of pressure?", options: ["Newton", "Joule", "Pascal", "Watt"], correctOptionIndex: 2, explanation: "One Pascal is equivalent to one Newton per square meter ($1 Pa = 1 N/m^2$) (Page 272)." },
+                    { question: "What happens to pressure as the area over which a force is applied decreases?", options: ["Increases", "Decreases", "Stays same", "Becomes zero"], correctOptionIndex: 0, explanation: "Pressure and area are inversely proportional for a given force (Page 273)." },
+                    { question: "What is 'gravity'?", options: ["Repulsive force.", "Attractive force of mass.", "Opposing motion force.", "Buoyancy force."], correctOptionIndex: 1, explanation: "Gravity is responsible for objects falling to Earth (Page 274)." },
+                    { question: "Who formulated the Law of Universal Gravitation?", options: ["Einstein", "Galilei", "Newton", "Kepler"], correctOptionIndex: 2, explanation: "Newton's law describes the gravitational attraction between two bodies (Page 275)." },
+                    { question: "What is 'friction'?", options: ["Accelerates objects.", "Opposes motion between surfaces.", "Pulls objects.", "Creates heat."], correctOptionIndex: 1, explanation: "Friction can be beneficial (like walking) or detrimental (like wear and tear) (Page 276)." },
+                    { question: "Which type of friction occurs when an object is sliding over a surface?", options: ["Static", "Rolling", "Sliding", "Fluid"], correctOptionIndex: 2, explanation: "Sliding friction acts against the direction of motion (Page 277)." },
+                    { question: "Which type of friction is present when an object is at rest on a surface with tendency to move?", options: ["Sliding", "Rolling", "Static", "Fluid"], correctOptionIndex: 2, explanation: "Static friction is usually greater than kinetic friction (Page 278)." },
+                    { question: "What is 'work' in physics?", options: ["Effort", "Force times distance", "Energy expended", "Power generated"], correctOptionIndex: 1, explanation: "Work is done only when there is displacement in the direction of the applied force ($W = F \\times d$) (Page 279)." },
+                    { question: "What is the SI unit of work?", options: ["Watt", "Newton", "Joule", "Pascal"], correctOptionIndex: 2, explanation: "One Joule is defined as one Newton-meter (Page 279)." },
+                    { question: "What is 'energy'?", options: ["Rate work done.", "Ability to do work.", "Force over distance.", "Heat capacity."], correctOptionIndex: 1, explanation: "Energy exists in various forms like kinetic, potential, thermal, etc. (Page 280)." },
+                    { question: "Which form of energy is associated with motion?", options: ["Potential", "Chemical", "Kinetic", "Thermal"], correctOptionIndex: 2, explanation: "Kinetic energy depends on mass and velocity ($KE = 1/2 mv^2$) (Page 281)." },
+                    { question: "Which form of energy is stored energy due to position or state?", options: ["Kinetic", "Thermal", "Potential", "Electrical"], correctOptionIndex: 2, explanation: "Gravitational potential energy depends on mass, gravity, and height ($PE = mgh$) (Page 282)." },
+                    { question: "What is 'power' in physics?", options: ["Object's energy.", "Rate of work.", "Force times velocity.", "Exert force ability."], correctOptionIndex: 1, explanation: "Power is work done per unit time ($P = W/t$) (Page 283)." },
+                    { question: "What is the SI unit of power?", options: ["Joule", "Newton", "Watt", "Pascal"], correctOptionIndex: 2, explanation: "One Watt is defined as one Joule per second (Page 283)." },
+                    { question: "What is 'light'?", options: ["Sound energy.", "Visible EM radiation.", "Heat energy.", "Chemical reaction."], correctOptionIndex: 1, explanation: "Light travels in waves and as particles (photons) (Page 284)." },
+                    { question: "What is the 'spectrum' of light?", options: ["Rainbow colors.", "Range of EM frequencies.", "Light intensity.", "Light speed."], correctOptionIndex: 1, explanation: "The electromagnetic spectrum includes radio waves, microwaves, infrared, visible light, ultraviolet, X-rays, and gamma rays (Page 285)." },
+                    { question: "Which color of visible light has the longest wavelength?", options: ["Blue", "Green", "Red", "Violet"], correctOptionIndex: 2, explanation: "Red light bends the least when passing through a prism (Page 286)." },
+                    { question: "Which color of visible light has the shortest wavelength?", options: ["Red", "Orange", "Green", "Violet"], correctOptionIndex: 3, explanation: "Violet light bends the most when passing through a prism (Page 286)." },
+                    { question: "What causes 'refraction' of light?", options: ["Light hitting surface.", "Light passing media.", "Light reflecting mirror.", "Light scattering."], correctOptionIndex: 1, explanation: "Refraction causes objects to appear bent in water (Page 287)." },
+                    { question: "What is 'reflection' of light?", options: ["Light bending lens.", "Light bouncing surface.", "Light splitting colors.", "Light absorbed."], correctOptionIndex: 1, explanation: "Mirrors demonstrate reflection (Page 288)." },
+                    { question: "What is 'sound'?", options: ["EM wave.", "Mechanical energy vibration.", "Chemical energy.", "Form of light."], correctOptionIndex: 1, explanation: "Sound requires a medium (solid, liquid, or gas) to travel (Page 289)." },
+                    { question: "Through which medium does sound travel fastest?", options: ["Gas", "Liquid", "Solid", "Vacuum"], correctOptionIndex: 2, explanation: "The particles in solids are closer together, allowing vibrations to transmit more efficiently (Page 290)." }
+                ];
+                originalQuizQuestions.push(...generalScienceMCQs);
 
-            // General Science (25 MCQs from Pages 401-417)
-            const generalScienceMCQs = [
-                { question: "What is the SI unit of electric charge?", options: ["Volt", "Ampere", "Coulomb", "Ohm"], correctOptionIndex: 2, explanation: "The Coulomb (C) is the SI unit of electric charge (Page 401)." },
-                { question: "Which of the following describes static electricity?", options: ["Flowing current.", "An imbalance of electric charges within or on the surface of a material.", "Electricity generated by magnets.", "Electricity from a power plant."], correctOptionIndex: 1, explanation: "Static electricity involves stationary charges (Page 402)." },
-                { question: "What is the process of generating electricity by moving a conductor through a magnetic field?", options: ["Electrolysis", "Electromagnetic induction", "Photovoltaic effect", "Thermoelectric effect"], correctOptionIndex: 1, explanation: "Electromagnetic induction is the principle behind generators and transformers (Page 403)." },
-                { question: "Which of the following is a characteristic of a magnet?", options: ["Attracts all materials.", "Has two poles (North and South) and attracts ferromagnetic materials.", "Only attracts non-metals.", "Can be turned on and off easily."], correctOptionIndex: 1, explanation: "Magnets have distinct poles and attract specific metals (Page 404)." },
-                { question: "What is the SI unit of power?", options: ["Joule", "Newton", "Watt", "Volt"], correctOptionIndex: 2, explanation: "The watt (W) is the unit of power, defined as one joule per second (Page 405)." },
-                { question: "What is the law of conservation of energy?", options: ["Energy can be created or destroyed.", "Energy is always lost in transformations.", "Energy cannot be created or destroyed, but it can be transformed from one form to another.", "Energy is only conserved in mechanical systems."], correctOptionIndex: 2, explanation: "Total energy in an isolated system remains constant (Page 406)." },
-                { question: "Which of the following is a form of potential energy?", options: ["Kinetic energy", "Thermal energy", "Gravitational potential energy", "Sound energy"], correctOptionIndex: 2, explanation: "Gravitational potential energy is stored energy due to an object's position in a gravitational field (Page 407)." },
-                { question: "What is the process of converting chemical energy into electrical energy?", options: ["Photosynthesis", "Respiration", "Electrolysis", "Electrochemical reaction (e.g., in a battery)"], correctOptionIndex: 3, explanation: "Batteries convert stored chemical energy into electrical energy (Page 408)." },
-                { question: "What is the SI unit of temperature?", options: ["Celsius", "Fahrenheit", "Kelvin", "Joule"], correctOptionIndex: 2, explanation: "Kelvin is the absolute temperature scale (Page 409)." },
-                { question: "Which state of matter has a definite shape and definite volume?", options: ["Liquid", "Gas", "Plasma", "Solid"], correctOptionIndex: 3, explanation: "Solids have fixed shapes and volumes (Page 410)." },
-                { question: "What is the process of a liquid changing into a gas?", options: ["Condensation", "Melting", "Evaporation", "Freezing"], correctOptionIndex: 2, explanation: "Evaporation involves particles gaining enough energy to escape as gas (Page 411)." },
-                { question: "What is the SI unit of electric current?", options: ["Volt", "Ohm", "Ampere", "Watt"], correctOptionIndex: 2, explanation: "The Ampere (A) is the base unit of electric current (Page 412)." },
-                { question: "Which of the following is a good conductor of electricity?", options: ["Wood", "Plastic", "Copper", "Glass"], correctOptionIndex: 2, explanation: "Copper is a metal with free electrons, allowing current to flow (Page 413)." },
-                { question: "What is the purpose of a fuse in an electrical circuit?", options: ["To increase current.", "To store charge.", "To protect the circuit from excessive current.", "To generate voltage."], correctOptionIndex: 2, explanation: "Fuses melt and break the circuit when current exceeds a safe level (Page 414)." },
-                { question: "What is the SI unit of electric potential difference (voltage)?", options: ["Ampere", "Ohm", "Volt", "Watt"], correctOptionIndex: 2, explanation: "The Volt (V) measures the potential energy difference per unit charge (Page 415)." },
-                { question: "What is Ohm's Law?", options: ["V = I/R", "I = V × R", "V = I × R", "R = V × I"], correctOptionIndex: 2, explanation: "Ohm's Law states that voltage (V) across a conductor is directly proportional to the current (I) flowing through it, with resistance (R) as the constant of proportionality (Page 416)." },
-                { question: "Which type of circuit has components connected in a single path, so the current is the same through each component?", options: ["Parallel circuit", "Series circuit", "Mixed circuit", "Complex circuit"], correctOptionIndex: 1, explanation: "In a series circuit, current flows through each component sequentially (Page 417)." },
-                { question: "Which type of circuit has components connected across the same two points, so the voltage is the same across each component?", options: ["Parallel circuit", "Series circuit", "Mixed circuit", "Complex circuit"], correctOptionIndex: 0, explanation: "In a parallel circuit, components are connected side-by-side (Page 417)." },
-                { question: "What is the SI unit of electric resistance?", options: ["Volt", "Ampere", "Ohm", "Watt"], correctOptionIndex: 2, explanation: "The ohm (Ω) measures resistance (Page 416)." },
-                { question: "Which of the following is a good conductor of heat?", options: ["Wood", "Plastic", "Glass", "Aluminum"], correctOptionIndex: 3, explanation: "Aluminum is a metal and conducts heat well (Page 413)." },
-                { question: "What is the process by which heat is transferred through direct contact?", options: ["Convection", "Radiation", "Conduction", "Insulation"], correctOptionIndex: 2, explanation: "Conduction occurs when heat flows through direct contact (Page 414)." },
-                { question: "Which type of mirror produces a virtual, upright, and diminished image?", options: ["Plane mirror", "Concave mirror", "Convex mirror", "Parabolic mirror"], correctOptionIndex: 2, explanation: "Convex mirrors are used in car side mirrors for a wider view (Page 404)." },
-                { question: "What is the SI unit of length?", options: ["Centimeter", "Kilometer", "Meter", "Foot"], correctOptionIndex: 2, explanation: "The meter (m) is the base unit of length (Page 412)." },
-                { question: "Which of the following is a vector quantity?", options: ["Speed", "Distance", "Displacement", "Time"], correctOptionIndex: 2, explanation: "Displacement has both magnitude and direction (Page 413)." },
-                { question: "What is the principle behind a simple pendulum?", options: ["Newton's first law", "Conservation of momentum", "Periodic motion", "Archimedes' principle"], correctOptionIndex: 2, explanation: "A pendulum exhibits repetitive, oscillating motion (Page 405)." }
-            ];
-            quizQuestions.push(...generalScienceMCQs);
+                // Social Studies (20 MCQs from Pages 591-618 - Geography: Natural Disasters and Environmental Issues)
+                const socialStudiesMCQs = [
+                    { question: "What is an 'earthquake'?", options: ["Volcanic eruption.", "Ground shaking.", "Severe storm.", "Long drought."], correctOptionIndex: 1, explanation: "Earthquakes are caused by tectonic plate movements (Page 591)." },
+                    { question: "What is the instrument used to measure the intensity of an earthquake?", options: ["Anemometer", "Barometer", "Seismograph", "Thermometer"], correctOptionIndex: 2, explanation: "A seismograph detects and records ground motion (Page 592)." },
+                    { question: "What is the point on the Earth's surface directly above the focus of an earthquake?", options: ["Focus", "Epicenter", "Fault line", "Trench"], correctOptionIndex: 1, explanation: "The epicenter is where earthquake damage is often most severe (Page 592)." },
+                    { question: "What is a 'tsunami'?", options: ["Strong wind storm.", "Large sea wave.", "Flash flood.", "Desert storm."], correctOptionIndex: 1, explanation: "Tsunamis are not tidal waves (Page 593)." },
+                    { question: "What is a 'volcano'?", options: ["Deep ocean trench.", "Erupting mountain.", "Large cave system.", "Type of forest."], correctOptionIndex: 1, explanation: "Volcanoes are formed by molten rock (magma) rising to the surface (Page 594)." },
+                    { question: "What is 'lava'?", options: ["Molten rock inside.", "Molten rock erupted.", "Ash and gas.", "Solidified rock."], correctOptionIndex: 1, explanation: "Lava is magma that has reached the surface (Page 595)." },
+                    { question: "What is a 'flood'?", options: ["A dry period.", "Water overflow.", "Type of earthquake.", "Strong ocean current."], correctOptionIndex: 1, explanation: "Floods can be caused by heavy rainfall, melting snow, or dam failures (Page 596)." },
+                    { question: "What is a 'drought'?", options: ["Excessive rainfall.", "Prolonged low rainfall.", "A type of storm.", "Sudden water increase."], correctOptionIndex: 1, explanation: "Droughts have significant impacts on agriculture and water supply (Page 597)." },
+                    { question: "What is a 'cyclone' or 'hurricane'?", options: ["Type of earthquake.", "Large rotating storm.", "Gentle breeze.", "Small localized storm."], correctOptionIndex: 1, explanation: "These terms refer to the same weather phenomenon but are used in different regions (Page 598)." },
+                    { question: "What is 'global warming'?", options: ["Localized heat increase.", "Earth's temp increase.", "Temp decrease.", "Ocean current change."], correctOptionIndex: 1, explanation: "Global warming is a major aspect of climate change (Page 599)." },
+                    { question: "What is the 'greenhouse effect'?", options: ["Earth cooling.", "Natural Earth warming.", "Grow plants indoors.", "Creates ozone."], correctOptionIndex: 1, explanation: "Without the greenhouse effect, Earth would be too cold to support life (Page 599)." },
+                    { question: "Which gas is considered the primary greenhouse gas contributing to global warming?", options: ["Oxygen", "Nitrogen", "Carbon dioxide", "Methane"], correctOptionIndex: 2, explanation: "Carbon dioxide is released primarily through the burning of fossil fuels (Page 600)." },
+                    { question: "What is 'ozone depletion'?", options: ["Ozone increase.", "Ozone layer thinning.", "New ozone formation.", "Ozone pollution."], correctOptionIndex: 1, explanation: "Ozone depletion allows more harmful UV radiation to reach Earth's surface (Page 601)." },
+                    { question: "What are 'CFCs' (chlorofluorocarbons) primarily responsible for?", options: ["Acid rain", "Water pollution", "Ozone depletion", "Smog formation"], correctOptionIndex: 2, explanation: "CFCs were widely used in refrigerants and aerosols (Page 601)." },
+                    { question: "What is 'acid rain'?", options: ["Normal rainfall.", "Acidic rainfall.", "High mineral rain.", "Desert rain."], correctOptionIndex: 1, explanation: "Acid rain is caused by sulfur dioxide and nitrogen oxides (Page 602)." },
+                    { question: "What is 'biodiversity'?", options: ["Human cultures.", "Life variety.", "Rock types.", "Climate change."], correctOptionIndex: 1, explanation: "Biodiversity is crucial for ecosystem health and stability (Page 603)." },
+                    { question: "What is 'habitat loss'?", options: ["New habitats.", "Habitat destruction.", "Ecosystem restoration.", "Protected area expansion."], correctOptionIndex: 1, explanation: "Habitat loss is a major driver of species extinction (Page 604)." },
+                    { question: "What is an 'invasive species'?", options: ["Native species.", "Non-native harmful species.", "Multi-habitat species.", "Specific area species."], correctOptionIndex: 1, explanation: "Invasive species outcompete native species for resources (Page 605)." },
+                    { question: "What is 'overpopulation'?", options: ["Balanced growth.", "Population exceeding capacity.", "Population decrease.", "Even distribution."], correctOptionIndex: 1, explanation: "Overpopulation puts strain on resources and infrastructure (Page 606)." },
+                    { question: "What is 'waste management'?", options: ["More waste.", "Managing waste.", "Burning waste.", "Dumping waste."], correctOptionIndex: 1, explanation: "Effective waste management involves reduction, reuse, recycling, and proper disposal (Page 607)." }
+                ];
+                originalQuizQuestions.push(...socialStudiesMCQs);
 
-            // Social Studies (15 MCQs from Pages 757-773)
-            const socialStudiesMCQs = [
-                { question: "What is the term for the study of the Earth's physical features, climate, population, and resources?", options: ["Geology", "Meteorology", "Demography", "Geography"], correctOptionIndex: 3, explanation: "Geography integrates various aspects of Earth and human interaction (Page 757)." },
-                { question: "Which of the following is a major factor influencing climate?", options: ["Population density", "Proximity to oceans, altitude, and latitude", "Economic systems", "Political ideologies"], correctOptionIndex: 1, explanation: "These geographical factors determine climate zones (Page 758)." },
-                { question: "What is a map projection?", options: ["A type of telescope.", "A systematic transformation of the latitudes and longitudes of locations on the surface of a sphere or ellipsoid into locations on a plane.", "A method of predicting weather.", "A way to measure earthquakes."], correctOptionIndex: 1, explanation: "Map projections represent a 3D Earth on a 2D surface (Page 759)." },
-                { question: "Which of the following is a major challenge related to water resources globally?", options: ["Excessive rainfall.", "Water scarcity, pollution, and unequal distribution.", "Abundant clean water.", "Efficient water management systems."], correctOptionIndex: 1, explanation: "Water issues are critical global concerns (Page 760)." },
-                { question: "What is desertification?", options: ["The expansion of forests.", "The process by which fertile land becomes desert, typically as a result of drought, deforestation, or inappropriate agriculture.", "Increased rainfall in dry areas.", "Growth of urban areas."], correctOptionIndex: 1, explanation: "Desertification is land degradation in arid regions (Page 761)." },
-                { question: "Which of the following is a major cause of soil erosion?", options: ["Planting trees.", "Deforestation, overgrazing, and unsustainable farming practices.", "Crop rotation.", "Terrace farming."], correctOptionIndex: 1, explanation: "These activities remove protective vegetation and expose soil (Page 762)." },
-                { question: "What is the purpose of sustainable agriculture?", options: ["To maximize short-term profits.", "To produce food in a way that is environmentally sound, economically viable, and socially responsible.", "To deplete soil nutrients quickly.", "To rely heavily on chemical fertilizers."], correctOptionIndex: 1, explanation: "Sustainable agriculture aims for long-term productivity and minimal impact (Page 763)." },
-                { question: "Which of the following is a major characteristic of a developed country?", options: ["Low GDP per capita.", "High industrialization, advanced infrastructure, and high living standards.", "High infant mortality rates.", "Reliance on primary economic activities."], correctOptionIndex: 1, explanation: "Developed countries have strong economies and high quality of life (Page 764)." },
-                { question: "What is the purpose of foreign aid?", options: ["To promote conflict.", "To provide financial or technical assistance to developing countries.", "To exploit resources.", "To increase debt."], correctOptionIndex: 1, explanation: "Foreign aid supports development and humanitarian efforts (Page 765)." },
-                { question: "Which of the following is a major challenge to global health?", options: ["Eradication of diseases.", "Pandemics, lack of access to healthcare, and malnutrition.", "Universal healthcare coverage.", "High vaccination rates."], correctOptionIndex: 1, explanation: "These factors contribute to health disparities (Page 766)." },
-                { question: "What is the purpose of the World Health Organization (WHO)?", options: ["To promote war.", "To direct and coordinate international health within the United Nations system.", "To control global economies.", "To provide military assistance."], correctOptionIndex: 1, explanation: "WHO leads global health initiatives (Page 767)." },
-                { question: "Which of the following is a major human right?", options: ["Right to unlimited wealth.", "Right to education", "Right to harm others.", "Right to avoid responsibilities."], correctOptionIndex: 1, explanation: "The right to education is fundamental for human development (Page 768)." },
-                { question: "What is the purpose of international law?", options: ["To allow countries to act without rules.", "To regulate the conduct of states and international organizations.", "To promote anarchy.", "To only apply to individuals."], correctOptionIndex: 1, explanation: "International law governs relations between nations (Page 769)." },
-                { question: "Which of the following is a major challenge to international peace and security?", options: ["Diplomacy.", "Terrorism, interstate conflicts, and proliferation of weapons.", "International cooperation.", "Disarmament treaties."], correctOptionIndex: 1, explanation: "These threats destabilize global order (Page 770)." },
-                { question: "What is the purpose of diplomacy?", options: ["To escalate conflicts.", "To conduct negotiations between nations to resolve disputes peacefully.", "To impose sanctions.", "To declare war."], correctOptionIndex: 1, explanation: "Diplomacy is the art of peaceful international relations (Page 771)." }
-            ];
-            quizQuestions.push(...socialStudiesMCQs);
+                // English (20 MCQs from Pages 871-894 - Grammar & Comprehension)
+                const englishMCQs = [
+                    { question: "Identify the noun in the sentence: 'The cat sat on the mat.'", options: ["The", "sat", "cat", "on"], correctOptionIndex: 2, explanation: "'Cat' is a person, place, animal, or thing (Page 871)." },
+                    { question: "Identify the verb in the sentence: 'Birds fly in the sky.'", options: ["Birds", "in", "sky", "fly"], correctOptionIndex: 3, explanation: "'Fly' is the action word in the sentence (Page 872)." },
+                    { question: "Identify the adjective in the sentence: 'She wore a red dress.'", options: ["She", "wore", "red", "dress"], correctOptionIndex: 2, explanation: "'Red' describes the noun 'dress' (Page 873)." },
+                    { question: "Identify the adverb in the sentence: 'He sings loudly.'", options: ["He", "sings", "loudly", "sings loudly"], correctOptionIndex: 2, explanation: "'Loudly' describes how he sings (Page 874)." },
+                    { question: "Which of the following is a pronoun?", options: ["Table", "Run", "Beautiful", "He"], correctOptionIndex: 3, explanation: "Pronouns replace nouns (Page 875)." },
+                    { question: "Complete the sentence with the correct article: 'I saw ___ elephant.'", options: ["a", "an", "the", "no article"], correctOptionIndex: 1, explanation: "'An' is used before words starting with a vowel sound (Page 876)." },
+                    { question: "Complete the sentence with the correct article: 'She has ___ unique idea.'", options: ["a", "an", "the", "no article"], correctOptionIndex: 0, explanation: "'Unique' starts with a consonant sound (Page 877)." },
+                    { question: "Which tense describes an action that happened in the past and is now complete?", options: ["Present simple", "Past continuous", "Past simple", "Future simple"], correctOptionIndex: 2, explanation: "Past simple is used for completed actions in the past (Page 878)." },
+                    { question: "Which tense describes an action that is happening now?", options: ["Past simple", "Present continuous", "Future simple", "Present perfect"], correctOptionIndex: 1, explanation: "Present continuous uses 'is/am/are' + verb-ing (Page 879)." },
+                    { question: "Identify the preposition in the sentence: 'The book is on the table.'", options: ["The", "book", "on", "table"], correctOptionIndex: 2, explanation: "'On' shows the relationship of the book to the table (Page 880)." },
+                    { question: "Identify the conjunction in the sentence: 'I like apples and bananas.'", options: ["I", "like", "and", "apples"], correctOptionIndex: 2, explanation: "'And' joins two words or clauses (Page 881)." },
+                    { question: "Identify the interjection in the sentence: 'Oh! I forgot my keys.'", options: ["I", "forgot", "keys", "Oh!"], correctOptionIndex: 3, explanation: "Interjections express sudden emotions (Page 882)." },
+                    { question: "Choose the singular form of 'children'.", options: ["Childrens", "Child", "Child's", "Childrens'"], correctOptionIndex: 1, explanation: "'Child' is the singular form of 'children' (Page 883)." },
+                    { question: "Choose the plural form of 'mouse'.", options: ["Mouses", "Mice", "Mouse's", "Mice's"], correctOptionIndex: 1, explanation: "The plural of 'mouse' is 'mice' (Page 884)." },
+                    { question: "Complete the sentence: 'The sun ___ in the east.'", options: ["rise", "rises", "rising", "rose"], correctOptionIndex: 1, explanation: "Use present simple with third person singular subject (Page 885)." },
+                    { question: "Complete the sentence: 'They ___ to the park yesterday.'", options: ["go", "goes", "went", "gone"], correctOptionIndex: 2, explanation: "Use the past simple form of the verb for a completed action in the past (Page 886)." },
+                    { question: "Choose the correct sentence:", options: ["He don't like coffee.", "He doesn't like coffee.", "He not like coffee.", "He isn't like coffee."], correctOptionIndex: 1, explanation: "Use 'doesn't' for third person singular negative in present simple (Page 887)." },
+                    { question: "Which of the following is a collective noun?", options: ["Student", "Tree", "Team", "Book"], correctOptionIndex: 2, explanation: "A collective noun refers to a group of individuals (Page 888)." },
+                    { question: "What is the opposite of 'big'?", options: ["Large", "Huge", "Small", "Giant"], correctOptionIndex: 2, explanation: "Small is the antonym of big (Page 889)." },
+                    { question: "What is the synonym of 'start'?", options: ["End", "Finish", "Begin", "Stop"], correctOptionIndex: 2, explanation: "Begin is a word with similar meaning to start (Page 890)." }
+                ];
+                originalQuizQuestions.push(...englishMCQs);
 
-            // English (25 MCQs from Pages 933-939)
-            const englishMCQs = [
-                { question: "What is the primary function of a verb?", options: ["To name a person, place, or thing.", "To express an action, occurrence, or state of being.", "To describe a noun.", "To connect sentences."], correctOptionIndex: 1, explanation: "Verbs are the core of the predicate in a sentence (Page 933)." },
-                { question: "Identify the action verb in the sentence: \"The student *studies* diligently.\"", options: ["The", "Student", "Studies", "Diligently"], correctOptionIndex: 2, explanation: "'Studies' indicates an action performed by the student (Page 933)." },
-                { question: "Which of the following is a linking verb?", options: ["Run", "Sing", "Appear", "Eat"], correctOptionIndex: 2, explanation: "Linking verbs connect the subject to a subject complement (e.g., 'is', 'seem', 'become', 'appear') (Page 933)." },
-                { question: "In the sentence: \"She *is* happy,\" what type of verb is 'is'?", options: ["Action verb", "Linking verb", "Auxiliary verb", "Transitive verb"], correctOptionIndex: 1, explanation: "'Is' connects 'She' to the adjective 'happy' (Page 933)." },
-                { question: "What is an auxiliary verb (or helping verb)?", options: ["A verb that expresses the main action.", "A verb that helps the main verb express action or a state of being.", "A verb that links the subject to a complement.", "A verb that modifies a noun."], correctOptionIndex: 1, explanation: "Auxiliary verbs combine with main verbs to form verb phrases (e.g., 'is running', 'has eaten') (Page 934)." },
-                { question: "In the sentence: \"They *have been* waiting,\" what is 'have been'?", options: ["Main verb", "Linking verb", "Auxiliary verbs", "Action verb"], correctOptionIndex: 2, explanation: "'Have been' helps the main verb 'waiting' (Page 934)." },
-                { question: "What is a transitive verb?", options: ["A verb that does not require a direct object.", "A verb that requires a direct object to complete its meaning.", "A verb that links the subject to a complement.", "A verb that expresses a state of being."], correctOptionIndex: 1, explanation: "Transitive verbs transfer action to an object (Page 935)." },
-                { question: "Which of the following sentences uses a transitive verb?", options: ["He sleeps.", "She sings beautifully.", "They built a house.", "The child cried."], correctOptionIndex: 2, explanation: "'Built' takes 'a house' as its direct object (Page 935)." },
-                { question: "What is an intransitive verb?", options: ["A verb that requires a direct object.", "A verb that does not require a direct object to complete its meaning.", "A verb that links the subject to a complement.", "A verb that expresses an action."], correctOptionIndex: 1, explanation: "Intransitive verbs do not have a direct object (Page 935)." },
-                { question: "Which of the following sentences uses an intransitive verb?", options: ["He kicked the ball.", "She wrote a letter.", "The sun shines.", "They built a house."], correctOptionIndex: 2, explanation: "'Shines' does not act upon an object (Page 935)." },
-                { question: "What is a regular verb?", options: ["A verb whose past tense and past participle are formed by adding -ed or -d.", "A verb that changes its spelling completely in past tense.", "A verb that is always in the present tense.", "A verb that links the subject to a complement."], correctOptionIndex: 0, explanation: "Regular verbs follow a predictable pattern for conjugation (Page 936)." },
-                { question: "Which of the following is a regular verb?", options: ["Go", "Eat", "Play", "See"], correctOptionIndex: 2, explanation: "The past tense of 'play' is 'played' (Page 936)." },
-                { question: "What is an irregular verb?", options: ["A verb whose past tense and past participle are formed by adding -ed or -d.", "A verb that does not follow the typical pattern for forming past tense and past participle.", "A verb that is always in the future tense.", "A verb that is always followed by an object."], correctOptionIndex: 1, explanation: "Irregular verbs have unique forms (Page 936)." },
-                { question: "Which of the following is an irregular verb?", options: ["Walk", "Learn", "Write", "Listen"], correctOptionIndex: 2, explanation: "The past tense of 'write' is 'wrote' (Page 936)." },
-                { question: "What is a phrasal verb?", options: ["A single verb.", "A verb combined with a preposition or adverb (or both) to create a new meaning.", "A verb that expresses a state of being.", "A verb that is always transitive."], correctOptionIndex: 1, explanation: "Phrasal verbs often have idiomatic meanings (Page 937)." },
-                { question: "In the sentence: \"She *looked up* the word in the dictionary,\" what is 'looked up'?", options: ["Main verb", "Linking verb", "Auxiliary verb", "Phrasal verb"], correctOptionIndex: 3, explanation: "'Looked up' is a verb phrase with a new meaning (Page 937)." },
-                { question: "What is the simple present tense of a verb?", options: ["Action happening now.", "Action that happened in the past.", "Action that will happen in the future.", "Action that happens regularly or is a general truth."], correctOptionIndex: 3, explanation: "Simple present describes habitual actions or facts (Page 938)." },
-                { question: "Which of the following sentences is in the simple present tense?", options: ["He is running.", "She ate an apple.", "They will sing.", "Birds fly."], correctOptionIndex: 3, explanation: "'Birds fly' expresses a general truth (Page 938)." },
-                { question: "What is the simple past tense of a verb?", options: ["Action happening now.", "Action that happened and completed in the past.", "Action that will happen in the future.", "Action that happens regularly."], correctOptionIndex: 1, explanation: "Simple past describes completed actions (Page 938)." },
-                { question: "Which of the following sentences is in the simple past tense?", options: ["I am reading.", "She wrote a letter.", "They will visit.", "He usually walks."], correctOptionIndex: 1, explanation: "'Wrote' indicates a completed action (Page 938)." },
-                { question: "What is the simple future tense of a verb?", options: ["Action happening now.", "Action that happened in the past.", "Action that will happen in the future.", "Action that happens regularly."], correctOptionIndex: 2, explanation: "Simple future describes actions that will occur (Page 939)." },
-                { question: "Which of the following sentences is in the simple future tense?", options: ["I am studying.", "He played football.", "She will travel.", "They work hard."], correctOptionIndex: 2, explanation: "'Will travel' indicates a future action (Page 939)." },
-                { question: "What is the present perfect tense?", options: ["Action completed in the past at a specific time.", "Action that started in the past and continues to the present, or an action completed in the past with relevance to the present.", "Action that will be completed in the future.", "Action that happens regularly."], correctOptionIndex: 1, explanation: "Present perfect connects past actions to the present (Page 939)." },
-                { question: "Which of the following sentences is in the present perfect tense?", options: ["I am eating.", "She has finished her homework.", "They were running.", "He will arrive."], correctOptionIndex: 1, explanation: "'Has finished' indicates a completed action with present relevance (Page 939)." },
-                { question: "What is the past perfect tense?", options: ["Action completed in the past before another past action.", "Action that started in the past and continues to the present.", "Action that will be completed in the future.", "Action that happens regularly."], correctOptionIndex: 0, explanation: "Past perfect indicates an action completed before another past event (Page 939)." }
-            ];
-            quizQuestions.push(...englishMCQs);
+                // Mathematics (20 MCQs from Pages 1021-1050)
+                const mathematicsMCQs = [
+                    { question: "What is the concept of 'ratio'?", options: ["Sum of numbers.", "Quantity comparison.", "Product of numbers.", "Difference of numbers."], correctOptionIndex: 1, explanation: "Ratio expresses how many times one quantity contains another (Page 1021)." },
+                    { question: "Simplify the ratio $15:25$.", options: ["$3:5$", "$5:3$", "$1:2$", "$2:3$"], correctOptionIndex: 0, explanation: "Divide both numbers by their greatest common divisor, which is $5$ ($15 \\div 5 = 3$, $25 \\div 5 = 5$) (Page 1021)." },
+                    { question: "What is 'proportion'?", options: ["Relationship.", "Equal ratios statement.", "Inverse of ratio.", "Sum of ratios."], correctOptionIndex: 1, explanation: "Proportions are used to solve for unknown quantities when two ratios are equivalent (Page 1022)." },
+                    { question: "If $2:3 = x:9$, what is the value of $x$?", options: ["$4$", "$6$", "$8$", "$12$"], correctOptionIndex: 1, explanation: "Cross-multiply: $2 \\times 9 = 3 \\times x \\implies 18 = 3x \\implies x = 6$ (Page 1022)." },
+                    { question: "What is 'direct proportion'?", options: ["One quantity decreases.", "Quantities change together.", "Unrelated quantities.", "Constant quantity."], correctOptionIndex: 1, explanation: "In direct proportion, the ratio between quantities remains constant (Page 1023)." },
+                    { question: "If $5$ apples cost $10, how much do $10$ apples cost (direct proportion)?", options: ["$15", "$20", "$25", "$30$"], correctOptionIndex: 1, explanation: "If $5$ apples cost $10, then $1$ apple costs $2. So, $10$ apples cost $10 \\times 2 = 20$ (Page 1023)." },
+                    { question: "What is 'inverse proportion'?", options: ["Quantities change together.", "One increases, other decreases.", "Quantities always equal.", "Quantities added."], correctOptionIndex: 1, explanation: "In inverse proportion, their product remains constant (Page 1024)." },
+                    { question: "If $3$ workers complete task in $10$ hours, how long for $6$ workers (inverse proportion)?", options: ["$3$ hours", "$4$ hours", "$5$ hours", "$6$ hours"], correctOptionIndex: 2, explanation: "Total work units = $3 \\times 10 = 30$. Time for $6$ workers = $30 \\div 6 = 5$ hours (Page 1024)." },
+                    { question: "What is 'percentage'?", options: ["Fraction of $10$", "Fraction of $100$", "Decimal number", "Ratio."], correctOptionIndex: 1, explanation: "Percentage is a way of expressing a part of a whole as a fraction of $100$ (Page 1025)." },
+                    { question: "Convert $0.25$ into a percentage.", options: ["$2.5\%$", "$25\%$", "$0.25\%$", "$250\%$"], correctOptionIndex: 1, explanation: "Multiply by $100$: $0.25 \\times 100 = 25\%$ (Page 1025)." },
+                    { question: "Convert $75\%$ into a fraction in its simplest form.", options: ["$3/4$", "$1/2$", "$1/4$", "$4/5$"], correctOptionIndex: 0, explanation: "$75\% = 75/100 = 3/4$ (Page 1026)." },
+                    { question: "If a shirt costs $200 and is on sale for $10\%$ off, what is the discount amount?", options: ["$10", "$20", "$30", "$40$"], correctOptionIndex: 1, explanation: "Discount = $10\%$ of $200 = (10/100) \\times 200 = 20$ (Page 1027)." },
+                    { question: "What is 'profit'?", options: ["Selling price less.", "Selling price equal.", "Selling price greater.", "Revenue minus expenses."], correctOptionIndex: 2, explanation: "Profit = Selling Price - Cost Price (Page 1028)." },
+                    { question: "What is 'loss'?", options: ["Selling price greater.", "Selling price less.", "Selling price equal.", "Revenue maximized."], correctOptionIndex: 1, explanation: "Loss = Cost Price - Selling Price (Page 1028)." },
+                    { question: "If an item bought for $50 and sold for $60, what is profit percentage?", options: ["$10\%$", "$20\%$", "$25\%$", "$30\%$"], correctOptionIndex: 1, explanation: "Profit = $60 - 50 = 10$. Profit Percentage = $(10/50) \\times 100 = 20\%$ (Page 1029)." },
+                    { question: "What is 'simple interest'?", options: ["Principal interest only.", "Principal plus interest.", "Annual interest.", "Daily compounded interest."], correctOptionIndex: 0, explanation: "Simple Interest = $P \\times R \\times T$ (Principal $\\times$ Rate $\\times$ Time) (Page 1030)." },
+                    { question: "Calculate simple interest on $1000 at $5\%$ per annum for $2$ years.", options: ["$50", "$100", "$150", "$200$"], correctOptionIndex: 1, explanation: "Simple Interest = $1000 \\times 0.05 \\times 2 = 100$ (Page 1030)." },
+                    { question: "What is 'compound interest'?", options: ["Principal interest only.", "Principal plus accumulated interest.", "Fixed interest.", "Decreasing interest."], correctOptionIndex: 1, explanation: "Compound interest leads to faster growth of money (Page 1031)." },
+                    { question: "What is 'algebraic expression'?", options: ["Equation.", "Numbers, variables, operations.", "Single variable.", "Number sequence."], correctOptionIndex: 1, explanation: "An algebraic expression does not contain an equals sign, unlike an equation (Page 1032)." },
+                    { question: "Simplify the expression: $3a + 4b - a + 2b$", options: ["$2a + 6b$", "$4a + 6b$", "$2a + 2b$", "$4a + 2b$"], correctOptionIndex: 0, explanation: "Combine like terms: $(3a - a) + (4b + 2b) = 2a + 6b$ (Page 1033)." }
+                ];
+                originalQuizQuestions.push(...mathematicsMCQs);
 
-            // Mathematics (25 MCQs from Pages 1070-1075)
-            const mathematicsMCQs = [
-                { question: "What is the value of $x$ in the equation $10x - 15 = 4x + 9$?", options: ["2", "3", "4", "5"], correctOptionIndex: 2, explanation: "Subtract $4x$ from both sides: $6x - 15 = 9$. Add 15 to both sides: $6x = 24$. Divide by 6: $x = 4$ (Page 1070)." },
-                { question: "Simplify the expression: $(x^5 y^7) / (x^2 y^3)$", options: ["$x^3 y^4$", "$x^7 y^{10}$", "$x^3 y^{10}$", "$x^7 y^4$"], correctOptionIndex: 0, explanation: "When dividing powers with the same base, subtract the exponents: $x^{5-2} y^{7-3} = x^3 y^4$ (Page 1071)." },
-                { question: "A sum of $4000 is invested at 5% compound interest semi-annually. What is the amount after 1 year?", options: ["$4200", "$4202.50", "$4204", "$4205.20"], correctOptionIndex: 1, explanation: "Amount = $P(1 + r/n)^{nt} = 4000(1 + 0.05/2)^{2 \\times 1} = 4000(1.025)^2 = 4000 \\times 1.050625 = 4202.50$ (Page 1072)." },
-                { question: "What is the area of a regular hendecagon (11 sides) with side length 5 cm and apothem 8.6 cm? (Area = $1/2 \\times perimeter \\times apothem$)", options: ["236.5 cm²", "283.8 cm²", "318.25 cm²", "340.45 cm²"], correctOptionIndex: 2, explanation: "Perimeter = $11 \\times 5 = 55$ cm. Area = $1/2 \\times 55 \\times 8.6 = 27.5 \\times 8.6 = 236.5$ cm² (Page 1073)." },
-                { question: "What is the volume of a sphere with radius 7 cm? (Use $\\pi = 22/7$)", options: ["1437.33 cm³", "1078 cm³", "2156 cm³", "2874.67 cm³"], correctOptionIndex: 0, explanation: "Volume = $4/3 \\pi r^3 = 4/3 \\times (22/7) \\times 7^3 = 4/3 \\times (22/7) \\times 343 = 4 \\times 22 \\times 49 / 3 = 4312/3 \\approx 1437.33$ cm³ (Page 1074)." },
-                { question: "What is the mean of the data set {10, 20, 30, 40, 50}?", options: ["20", "25", "30", "35"], correctOptionIndex: 2, explanation: "Mean = Sum / Count = $(10+20+30+40+50)/5 = 150/5 = 30$ (Page 1075)." },
-                { question: "What is the probability of drawing a King or an Ace from a standard deck of 52 playing cards?", options: ["4/52", "8/52", "12/52", "16/52"], correctOptionIndex: 1, explanation: "Kings = 4. Aces = 4. Since they are mutually exclusive, P(King or Ace) = P(King) + P(Ace) = $4/52 + 4/52 = 8/52 = 2/13$ (Page 1075)." },
-                { question: "Solve the inequality: $6x + 5 > 23$", options: ["$x > 3$", "$x < 3$", "$x > 4$", "$x < 4$"], correctOptionIndex: 0, explanation: "Subtract 5 from both sides: $6x > 18$. Divide by 6: $x > 3$ (Page 1070)." },
-                { question: "Factorize the expression: $x^2 - 9$", options: ["$(x-3)^2$", "$(x+3)^2$", "$(x-3)(x+3)$", "$(x-9)(x+1)$"], correctOptionIndex: 2, explanation: "This is a difference of squares: $a^2 - b^2 = (a-b)(a+b)$ (Page 1071)." },
-                { question: "A certain work can be done by 10 men in 8 days. How many men are required to do the same work in 5 days?", options: ["12 men", "14 men", "16 men", "20 men"], correctOptionIndex: 2, explanation: "Total work units = $10 \\text{ men} \\times 8 \\text{ days} = 80 \\text{ man-days}$. Men required = $80 \\text{ man-days} / 5 \\text{ days} = 16$ men (Page 1072)." },
-                { question: "What is the circumference of a circle with an area of $314 \\text{ cm}^2$? (Use $\\pi = 3.14$)", options: ["31.4 cm", "62.8 cm", "94.2 cm", "125.6 cm"], correctOptionIndex: 1, explanation: "Area = $\\pi r^2 \\implies 314 = 3.14 \\times r^2 \\implies r^2 = 100 \\implies r = 10$ cm. Circumference = $2\\pi r = 2 \\times 3.14 \\times 10 = 62.8$ cm (Page 1073)." },
-                { question: "What is the total surface area of a rectangular prism with length 10 cm, width 5 cm, and height 3 cm?", options: ["120 cm²", "150 cm²", "160 cm²", "190 cm²"], correctOptionIndex: 3, explanation: "Surface Area = $2(lw + lh + wh) = 2((10)(5) + (10)(3) + (5)(3)) = 2(50 + 30 + 15) = 2(95) = 190$ cm² (Page 1074)." },
-                { question: "What is the median of the following data set: 1, 2, 3, 4, 5, 6, 7?", options: ["3", "4", "5", "6"], correctOptionIndex: 1, explanation: "The middle number in an ordered set is the median (Page 1075)." },
-                { question: "A bag contains 5 red and 5 blue marbles. What is the probability of drawing two red marbles without replacement?", options: ["25/100", "20/90", "25/90", "1/2"], correctOptionIndex: 1, explanation: "P(Red first) = $5/10$. P(Red second) = $4/9$. P(Two Reds) = $(5/10) \\times (4/9) = 20/90 = 2/9$ (Page 1075)." },
-                { question: "What is the solution to the equation $x^2 - 12x + 36 = 0$?", options: ["$x=6$", "$x=-6$", "$x=3$", "$x=-3$"], correctOptionIndex: 0, explanation: "This is a perfect square trinomial: $(x-6)^2 = 0$, so $x=6$ (Page 1070)." },
-                { question: "If $f(x) = x^2 + 2x - 5$, what is $f(3)$?", options: ["4", "8", "10", "12"], correctOptionIndex: 2, explanation: "$f(3) = 3^2 + 2(3) - 5 = 9 + 6 - 5 = 10$ (Page 1071)." },
-                { question: "What is the compound interest on $2000 at 10% per annum for 2 years, compounded annually?", options: ["$400", "$420", "$440", "$460"], correctOptionIndex: 1, explanation: "Amount = $P(1 + r/100)^n = 2000(1 + 10/100)^2 = 2000(1.1)^2 = 2000 \\times 1.21 = 2420$. Interest = $2420 - 2000 = 420$ (Page 1072)." },
-                { question: "What is the area of a regular octagon with side length 6 cm and apothem 7.24 cm? (Area = $1/2 \\times perimeter \\times apothem$)", options: ["173.76 cm²", "217.2 cm²", "260.64 cm²", "347.52 cm²"], correctOptionIndex: 1, explanation: "Perimeter = $8 \\times 6 = 48$ cm. Area = $1/2 \\times 48 \\times 7.24 = 24 \\times 7.24 = 173.76$ cm² (Page 1073)." },
-                { question: "What is the volume of a cylinder with radius 5 cm and height 8 cm? (Use $\\pi = 3.14$)", options: ["314 cm³", "471 cm³", "628 cm³", "785 cm³"], correctOptionIndex: 2, explanation: "Volume = $\\pi r^2 h = 3.14 \\times 5^2 \\times 8 = 3.14 \\times 25 \\times 8 = 3.14 \\times 200 = 628$ cm³ (Page 1074)." },
-                { question: "What is the range of the following data set: 5, 5, 5, 5, 5?", options: ["0", "1", "5", "10"], correctOptionIndex: 0, explanation: "Range = Maximum - Minimum = $5 - 5 = 0$ (Page 1075)." },
-                { question: "A coin is tossed three times. What is the probability of getting exactly two heads?", options: ["1/8", "2/8", "3/8", "4/8"], correctOptionIndex: 2, explanation: "Possible outcomes: HHH, HHT, HTH, THH, HTT, THT, TTH, TTT (8 total). Exactly two heads: HHT, HTH, THH (3 outcomes). Probability = $3/8$ (Page 1075)." },
-                { question: "What is the solution to the equation $x/3 + 2 = 5$?", options: ["3", "6", "9", "12"], correctOptionIndex: 2, explanation: "$x/3 = 3$, so $x = 9$ (Page 1070)." },
-                { question: "What is the slope of the line passing through points (0, 0) and (5, 10)?", options: ["1", "2", "3", "4"], correctOptionIndex: 1, explanation: "Slope = $(y_2 - y_1) / (x_2 - x_1) = (10 - 0) / (5 - 0) = 10 / 5 = 2$ (Page 1071)." },
-                { question: "If the cost of 12 eggs is $36, what is the cost of 7 eggs?", options: ["$18", "$21", "$24", "$28"], correctOptionIndex: 1, explanation: "Cost per egg = $36 / 12 = 3$. Cost of 7 eggs = $7 \\times 3 = 21$ (Page 1072)." },
-                { question: "What is the perimeter of a regular heptagon with side length 8 cm?", options: ["48 cm", "56 cm", "64 cm", "72 cm"], correctOptionIndex: 1, explanation: "A heptagon has 7 sides. Perimeter = $7 \\times 8 = 56$ cm (Page 1073)." }
-            ];
-            quizQuestions.push(...mathematicsMCQs);
+                // Remaining 20 MCQs will be additional science, social studies, English and Mathematics to reach 100.
+                // General Science (Additional 5 MCQs from Pages 271-320)
+                const generalScienceMCQs_add = [
+                    { question: "What is 'reflection' of sound?", options: ["Sound bending.", "Sound bouncing.", "Sound absorbed.", "Sound in vacuum."], correctOptionIndex: 1, explanation: "Echoes are examples of sound reflection (Page 291)." },
+                    { question: "What is 'refraction' of sound?", options: ["Sound bouncing.", "Sound bending medium.", "Sound absorbed.", "Sound straight line."], correctOptionIndex: 1, explanation: "Sound refraction explains why sound travels further over water at night (Page 292)." },
+                    { question: "What is 'pitch' of sound?", options: ["Loudness.", "High/low sound.", "Quality.", "Speed."], correctOptionIndex: 1, explanation: "High frequency equals high pitch (Page 293)." },
+                    { question: "What is 'loudness' of sound?", options: ["Perceived sound intensity.", "High/low sound.", "Quality.", "Speed."], correctOptionIndex: 0, explanation: "Loudness is measured in decibels (Page 294)." },
+                    { question: "Which of the following is an example of a simple machine?", options: ["Television", "Washing machine", "Lever", "Computer"], correctOptionIndex: 2, explanation: "Simple machines include levers, pulleys, and inclined planes (Page 295)." }
+                ];
+                originalQuizQuestions.push(...generalScienceMCQs_add);
 
-            // Randomly select one special question
-            specialQuestionIndex = Math.floor(Math.random() * quizQuestions.length);
-            quizQuestions[specialQuestionIndex].special = true;
+                // Social Studies (Additional 5 MCQs from Pages 591-618)
+                const socialStudiesMCQs_add = [
+                    { question: "What is 'sustainable development'?", options: ["Present needs met.", "Future needs met.", "Rapid growth.", "Technology only."], correctOptionIndex: 0, explanation: "Sustainable development balances economic, social, and environmental considerations (Page 608)." },
+                    { question: "What is 'renewable energy'?", options: ["Runs out quickly.", "Continuously replenished.", "Fossil fuels.", "Causes pollution."], correctOptionIndex: 1, explanation: "Renewable energy sources include solar, wind, hydro, and geothermal (Page 609)." },
+                    { question: "Which of the following is a non-renewable energy source?", options: ["Hydroelectric power", "Nuclear energy", "Biomass energy", "Tidal energy"], correctOptionIndex: 1, explanation: "Nuclear energy uses uranium, a finite resource (Page 610)." },
+                    { question: "What is 'desertification'?", options: ["Forest expansion.", "Fertile land becomes desert.", "Increased rainfall.", "New rivers."], correctOptionIndex: 1, explanation: "Desertification is a major environmental problem (Page 611)." },
+                    { question: "What is 'biodegradable waste'?", options: ["Non-decomposable.", "Broken down naturally.", "Plastic waste.", "Metal waste."], correctOptionIndex: 1, explanation: "Biodegradable waste can be composted (Page 612)." }
+                ];
+                originalQuizQuestions.push(...socialStudiesMCQs_add);
 
-            // Apply 30% chance to shuffle the entire quiz order
-            if (Math.random() < 0.3) {
-                shuffleArray(quizQuestions);
-                // After shuffling, find the new index of the special question
-                specialQuestionIndex = quizQuestions.findIndex(q => q.special);
+                // English (Additional 5 MCQs from Pages 871-894)
+                const englishMCQs_add = [
+                    { question: "Choose the correct sentence structure:", options: ["Walked dog I.", "I walked dog.", "Dog walked I.", "Walked I dog."], correctOptionIndex: 1, explanation: "Standard English sentence structure is Subject-Verb-Object (Page 891)." },
+                    { question: "Identify the odd one out:", options: ["Apple", "Orange", "Banana", "Table"], correctOptionIndex: 3, explanation: "Table is an inanimate object; others are fruits (Page 892)." },
+                    { question: "What is the past tense of 'eat'?", options: ["Eats", "Eaten", "Ate", "Eating"], correctOptionIndex: 2, explanation: "'Ate' is the simple past form of 'eat' (Page 893)." },
+                    { question: "What is the comparative form of 'tall'?", options: ["Taller", "Tallest", "More tall", "Most tall"], correctOptionIndex: 0, explanation: "For most one-syllable adjectives, add '-er' for comparative (Page 894)." },
+                    { question: "What is the superlative form of 'good'?", options: ["Gooder", "Goodest", "Better", "Best"], correctOptionIndex: 3, explanation: "Best' is the irregular superlative form of 'good' (Page 894)." }
+                ];
+                originalQuizQuestions.push(...englishMCQs_add);
+
+                // Mathematics (Additional 5 MCQs from Pages 1021-1050)
+                const mathematicsMCQs_add = [
+                    { question: "Which property is shown: $a + b = b + a$?", options: ["Associative", "Commutative", "Distributive", "Identity"], correctOptionIndex: 1, explanation: "The commutative property states that the order of operands does not affect the result (Page 1034)." },
+                    { question: "Which property is shown: $a(b + c) = ab + ac$?", options: ["Commutative", "Associative", "Distributive", "Identity"], correctOptionIndex: 2, explanation: "The distributive property explains how multiplication distributes over addition (Page 1035)." },
+                    { question: "What is the value of $2^5$?", options: ["$10$", "$16$", "$25$", "$32$"], correctOptionIndex: 3, explanation: "$2^5 = 2 \\times 2 \\times 2 \\times 2 \\times 2 = 32$ (Page 1036)." },
+                    { question: "What is the square root of $144$?", options: ["$10$", "$12$", "$14$", "$16$"], correctOptionIndex: 1, explanation: "The square root of a number is a value that, when multiplied by itself, gives the original number (Page 1037)." },
+                    { question: "Find the missing number in the sequence: $2, 4, 6, 8, \\text{___}, 12$", options: ["$9$", "$10$", "$11$", "$13$"], correctOptionIndex: 1, explanation: "This is an arithmetic sequence with a common difference of $2$ (Page 1038)." }
+                ];
+                originalQuizQuestions.push(...mathematicsMCQs_add);
+
+
+                // More MCQs to reach 100, ensuring content from other areas of the provided PDF
+                // History (from pages 619-790) - 10 MCQs
+                const historyMCQs = [
+                    { question: "The Mughal Emperor known for compiling the 'Ain-i-Akbari' was:", options: ["Babur", "Humayun", "Akbar", "Jahangir"], correctOptionIndex: 2, explanation: "Ain-i-Akbari is a detailed document recording the administration of the Mughal Empire under Emperor Akbar. (Ref. Page 740)" },
+                    { question: "The Partition of Bengal in $1905$ was orchestrated by which British Viceroy?", options: ["Lord Dalhousie", "Lord Curzon", "Lord Mountbatten", "Lord Ripon"], correctOptionIndex: 1, explanation: "Lord Curzon partitioned Bengal to weaken the growing nationalist movement, leading to widespread protests. (Ref. Page 765)" },
+                    { question: "Who founded the Indian National Congress in $1885$?", options: ["Mahatma Gandhi", "Jawaharlal Nehru", "A.O. Hume", "Sardar Patel"], correctOptionIndex: 2, explanation: "The Indian National Congress was founded by a British civil servant, A.O. Hume, with the aim of creating a platform for civil and political dialogue among Indians. (Ref. Page 762)" },
+                    { question: "The Battle of Panipat ($1526$) was fought between Babur and:", options: ["Sher Shah Suri", "Ibrahim Lodi", "Hemu", "Rana Sanga"], correctOptionIndex: 1, explanation: "This battle marked the beginning of the Mughal Empire in India, with Babur defeating the Delhi Sultan, Ibrahim Lodi. (Ref. Page 738)" },
+                    { question: "Which major event led to the end of the East India Company's rule in India?", options: ["Battle of Buxar", "Revolt of $1857$", "Muslim League form.", "Salt March"], correctOptionIndex: 1, explanation: "The widespread rebellion of $1857$ directly led to the British Crown taking over administration from the East India Company. (Ref. Page 760)" },
+                    { question: "The ancient city of Mohenjo-Daro is located in which modern-day country?", options: ["India", "Pakistan", "Afghanistan", "Iran"], correctOptionIndex: 1, explanation: "Mohenjo-Daro is a significant archaeological site of the Indus Valley Civilization, located in Sindh, Pakistan. (Ref. Page 620)" },
+                    { question: "Who was the founder of the Mauryan Empire?", options: ["Ashoka", "Bindusara", "Chandragupta Maurya", "Samudragupta"], correctOptionIndex: 2, explanation: "Chandragupta Maurya established the vast Mauryan Empire in ancient India. (Ref. Page 630)" },
+                    { question: "The 'Quit India Movement' was launched by Mahatma Gandhi in which year?", options: ["$1920$", "$1930$", "$1942$", "$1947$"], correctOptionIndex: 2, explanation: "The Quit India Movement was a significant civil disobedience movement launched during World War II, demanding an end to British rule in India. (Ref. Page 775)" },
+                    { question: "The ancient Mesopotamian civilization developed between which two rivers?", options: ["Indus and Ganges", "Yellow and Yangtze", "Tigris and Euphrates", "Nile and Congo"], correctOptionIndex: 2, explanation: "Mesopotamia, meaning 'land between the rivers,' refers to the region between the Tigris and Euphrates rivers. (Ref. Page 620)" },
+                    { question: "Which of the following was NOT a major cause of World War I?", options: ["Militarism", "Alliances", "Imperialism", "Great Depression"], correctOptionIndex: 3, explanation: "The Great Depression occurred much later ($1930s$) and was a cause of World War II, not World War I. (Ref. Page 780)" }
+                ];
+                originalQuizQuestions.push(...historyMCQs);
+                
+                // General Knowledge / Current Affairs / Pakistan Studies (10 MCQs - Implied from various sections/general context)
+                const gkPakistanMCQs = [
+                    { question: "Who was the first Governor-General of Pakistan?", options: ["Liaquat Ali Khan", "Muhammad Ali Jinnah", "Ayub Khan", "Ghulam Muhammad"], correctOptionIndex: 1, explanation: "Muhammad Ali Jinnah became the first Governor-General of Pakistan after its independence in $1947$. (General Pakistan Studies knowledge)" },
+                    { question: "When did Pakistan gain independence?", options: ["Aug $14, 1947$", "Aug $15, 1947$", "Mar $23, 1940$", "Sep $11, 1948$"], correctOptionIndex: 0, explanation: "Pakistan celebrates its Independence Day on August $14$th each year. (General Pakistan Studies knowledge)" },
+                    { question: "What is the capital city of Pakistan?", options: ["Lahore", "Karachi", "Islamabad", "Peshawar"], correctOptionIndex: 2, explanation: "Islamabad became the capital of Pakistan in $1960$, replacing Karachi. (General Pakistan Studies knowledge)" },
+                    { question: "The highest peak in Pakistan is K2, also known as:", options: ["Mount Everest", "Nanga Parbat", "Godwin Austen", "Broad Peak"], correctOptionIndex: 2, explanation: "K2 is the second-highest mountain in the world and is often referred to as Mount Godwin Austen. (General Geography/Pakistan Studies knowledge)" },
+                    { question: "The largest desert in Pakistan is the:", options: ["Thal Desert", "Cholistan Desert", "Thar Desert", "Kharan Desert"], correctOptionIndex: 2, explanation: "The Thar Desert extends into Pakistan and is the largest desert in Sindh province. (General Geography/Pakistan Studies knowledge)" },
+                    { question: "Who wrote the national anthem of Pakistan?", options: ["Allama Iqbal", "M.A. Jinnah", "Hafeez Jalandhari", "Faiz Ahmed Faiz"], correctOptionIndex: 2, explanation: "The lyrics of the national anthem, 'Qaumi Taranah', were written by Hafeez Jalandhari. (General Pakistan Studies knowledge)" },
+                    { question: "The 'Quaid-e-Azam' title refers to:", options: ["Allama Iqbal", "Liaquat Ali Khan", "Muhammad Ali Jinnah", "Zulfiqar Bhutto"], correctOptionIndex: 2, explanation: "Quaid-e-Azam, meaning 'Great Leader', is the honorary title given to Muhammad Ali Jinnah, the founder of Pakistan. (General Pakistan Studies knowledge)" },
+                    { question: "The largest province of Pakistan by area is:", options: ["Punjab", "Sindh", "KPK", "Balochistan"], correctOptionIndex: 3, explanation: "Balochistan covers the largest land area among all provinces of Pakistan. (General Geography/Pakistan Studies knowledge)" },
+                    { question: "The currency of Pakistan is:", options: ["Rupee", "Dollar", "Dinar", "Riyal"], correctOptionIndex: 0, explanation: "The official currency of Pakistan is the Pakistani Rupee (PKR). (General Knowledge)" },
+                    { question: "The minimum age for voting in general elections in Pakistan is:", options: ["$16$ years", "$18$ years", "$21$ years", "$25$ years"], correctOptionIndex: 1, explanation: "Citizens who are $18$ years and above are eligible to vote in Pakistan. (General Civics/Pakistan Studies knowledge)" }
+                ];
+                originalQuizQuestions.push(...gkPakistanMCQs);
+
+                // Randomly select one special question from the entire set on initial load
+                // and store its ORIGINAL index. This ensures the same question is 'special'
+                // across quiz restarts unless the data is explicitly reloaded.
+                specialQuestionOriginalIndex = Math.floor(Math.random() * originalQuizQuestions.length);
+            }
+
+            // Create a fresh copy of questions for the current quiz attempt
+            quizQuestions = JSON.parse(JSON.stringify(originalQuizQuestions));
+
+            // Mark the special question in the current quizQuestions array
+            quizQuestions[specialQuestionOriginalIndex].special = true;
+
+            // Shuffle the entire quiz question order
+            shuffleArray(quizQuestions);
+
+            // After shuffling, ensure the 'special' flag is correctly assigned to the intended question
+            // The shuffle operation might move the original special question. We need to re-find it
+            // and ensure its 'special' property is true, and others are false.
+            let foundSpecial = false;
+            quizQuestions.forEach((q, index) => {
+                if (q.special && !foundSpecial) { // If this is the originally marked special question (and we haven't found it yet)
+                    // Keep it marked special
+                    foundSpecial = true;
+                } else {
+                    q.special = false; // Ensure all others are not marked special
+                }
+            });
+
+            // If somehow the special question got lost or unmarked during deep copy/shuffle, re-assign one
+            if (!foundSpecial) {
+                const newSpecialIndex = Math.floor(Math.random() * quizQuestions.length);
+                quizQuestions[newSpecialIndex].special = true;
+                // Update specialQuestionOriginalIndex to reflect this newly chosen special question's original index
+                specialQuestionOriginalIndex = originalQuizQuestions.findIndex(originalQ =>
+                    JSON.stringify(originalQ) === JSON.stringify(quizQuestions[newSpecialIndex])
+                );
             }
         }
 
+        // Load MathJax for rendering LaTeX
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+        script.async = true;
+        document.head.appendChild(script);
+
         // Initialize the quiz when the script loads
         initializeQuiz();
+        // Explicitly show the login page after initialization to prevent any display issues
+        showPage('loginPage');
     </script>
 </body>
 </html>
